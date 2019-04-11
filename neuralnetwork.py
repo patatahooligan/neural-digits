@@ -13,5 +13,12 @@ class NeuralNetwork:
         return a
 
     @staticmethod
+    def get_number_of_successes(predictions, labels):
+        """Verify predictions using labels and return number of sucesseses"""
+
+        prediction_success = [numpy.argmax(prediction) == numpy.argmax(label) for prediction, label in zip(predictions,labels)]
+        return sum(prediction_success)
+
+    @staticmethod
     def activation(x):
         return 1 / (1 + numpy.exp(-x))
